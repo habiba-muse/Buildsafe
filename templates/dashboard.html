@@ -2,5 +2,21 @@
 {% block content %}
 <h1>Dashboard</h1>
 <p>Welcome, {{ user.email }}</p>
+<a href="{{ url_for('assessment.upload') }}">New Assessment</a>
 <a href="{{ url_for('auth.logout') }}">Log out</a>
+
+<h2>Recent Assessments</h2>
+{% if assessments %}
+<ul>
+{% for a in assessments %}
+  <li>
+    <a href="{{ url_for('assessment.view_assessment', assessment_id=a.id) }}">
+      Assessment #{{ a.id }} — {{ a.status }} — {{ a.created_at }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No assessments yet.</p>
+{% endif %}
 {% endblock %}

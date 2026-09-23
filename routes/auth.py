@@ -1,5 +1,5 @@
 ﻿from flask import Blueprint, render_template, request, redirect, url_for, session, flash
-from models import db, User
+from models import db, User, Assessment
 
 auth_bp = Blueprint("auth", __name__)
 
@@ -49,7 +49,8 @@ def dashboard():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
     user = User.query.get(session["user_id"])
-    return render_template("dashboard.html", user=user)
+    assessments = Assessment.query.filter_by(user_id=user.id).order_by(Assessment.created_at.desc()).all()
+    return render_template("dashboard.html", user=user, assessments=assessments)
 
 @auth_bp.route("/logout")
 def logout():
