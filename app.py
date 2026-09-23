@@ -2,11 +2,13 @@
 from config import Config
 from models import db
 from routes.auth import auth_bp
+from routes.assessment import assessment_bp
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
 app.register_blueprint(auth_bp)
+app.register_blueprint(assessment_bp)
 
 @app.route("/")
 def home():

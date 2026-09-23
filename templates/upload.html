@@ -1,0 +1,12 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<h1>Upload Building Photos</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}<ul>{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
+{% endwith %}
+<form method="POST" enctype="multipart/form-data">
+  <input type="file" name="images" accept=".png,.jpg,.jpeg" multiple required>
+  <button type="submit">Upload</button>
+</form>
+<a href="{{ url_for('auth.dashboard') }}">Back to dashboard</a>
+{% endblock %}
