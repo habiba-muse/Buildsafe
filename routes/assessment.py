@@ -1,8 +1,10 @@
 ﻿import os
+import json
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash, current_app
 from werkzeug.utils import secure_filename
 from models import db, Assessment
 from ai.image_validator import validate_images, is_valid_image
+from ai.vision import analyze_image
 
 assessment_bp = Blueprint("assessment", __name__)
 
@@ -50,10 +52,17 @@ def upload():
 
             saved_paths.append(filepath)
 
+        all_findings = []
+        for path in saved_paths:
+            image_findings = analyze_image(path)
+            all_findings.extend(image_findings)
+
         new_assessment.image_paths = ",".join(saved_paths)
+        new_assessment.findings = json.dumps(all_findings)
+        new_assessment.status = "analyzed"
         db.session.commit()
 
-        flash("Images uploaded successfully. Assessment ID: " + str(new_assessment.id))
+        flash("Images uploaded and analyzed. Assessment ID: " + str(new_assessment.id))
         return redirect(url_for("assessment.view_assessment", assessment_id=new_assessment.id))
 
     return render_template("upload.html")
@@ -75,4 +84,11 @@ def view_assessment(assessment_id):
         rel = rel.replace("\\", "/")
         image_names.append(rel)
 
-    return render_template("assessment_detail.html", assessment=assessment, image_names=image_names)
+    findings = json.loads(assessment.findings) if assessment.findings else []
+
+    return render_template(
+        "assessment_detail.html",
+        assessment=assessment,
+        image_names=image_names,
+        findings=findings
+    )

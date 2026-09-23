@@ -9,5 +9,19 @@
   <img src="{{ url_for('static', filename='uploads/' + name) }}" width="200">
 {% endfor %}
 
+<h2>Findings</h2>
+{% if findings %}
+<ul>
+{% for f in findings %}
+  <li>
+    <strong>{{ f.issue }}</strong> — confidence: {{ f.confidence }}
+    <br>Evidence: {{ f.evidence | join(", ") }}
+  </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No findings detected.</p>
+{% endif %}
+
 <p><a href="{{ url_for('auth.dashboard') }}">Back to dashboard</a></p>
 {% endblock %}
