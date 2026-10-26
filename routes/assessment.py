@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from models import db, Assessment
 from ai.image_validator import validate_images, is_valid_image
 from ai.vision import analyze_image
+from ai.feature_extractor import normalize_findings
 
 assessment_bp = Blueprint("assessment", __name__)
 
@@ -58,7 +59,7 @@ def upload():
             all_findings.extend(image_findings)
 
         new_assessment.image_paths = ",".join(saved_paths)
-        new_assessment.findings = json.dumps(all_findings)
+        new_assessment.findings = json.dumps(normalize_findings(all_findings))
         new_assessment.status = "analyzed"
         db.session.commit()
 
@@ -92,3 +93,4 @@ def view_assessment(assessment_id):
         image_names=image_names,
         findings=findings
     )
+

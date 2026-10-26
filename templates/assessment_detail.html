@@ -15,6 +15,7 @@
 {% for f in findings %}
   <li>
     <strong>{{ f.issue }}</strong> — confidence: {{ f.confidence }}
+    — seen in {{ f.seen_in_images }} image(s)
     <br>Evidence: {{ f.evidence | join(", ") }}
   </li>
 {% endfor %}
