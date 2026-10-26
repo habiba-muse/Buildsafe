@@ -7,6 +7,7 @@ from ai.image_validator import validate_images, is_valid_image
 from ai.vision import analyze_image
 from ai.feature_extractor import normalize_findings
 from ai.risk_engine import compute_risk
+from ai.recommendation_engine import get_recommendations
 
 assessment_bp = Blueprint("assessment", __name__)
 
@@ -93,7 +94,9 @@ def view_assessment(assessment_id):
         assessment=assessment,
         image_names=image_names,
         findings=findings,
-        risk=compute_risk(findings)
+        risk=compute_risk(findings),
+        recommendations=get_recommendations(findings)
     )
+
 
 

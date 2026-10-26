@@ -1,0 +1,99 @@
+﻿{
+  "wall_crack": {
+    "title": "Wall crack",
+    "why_it_matters": "Some cracks are only cosmetic, but wide, long, or growing cracks may indicate movement in the wall or foundation.",
+    "possible_causes": [
+      "Soil settlement or a weak foundation",
+      "Water getting into the wall",
+      "Poor quality mortar or blocks",
+      "Overloading or poor construction"
+    ],
+    "actions": [
+      "Mark both ends of the crack with a pencil and the date, then check weekly to see if it grows",
+      "Take clear photos with a ruler beside the crack",
+      "Keep water away from the wall by fixing gutters and drainage",
+      "Do not just plaster over it until the cause is understood",
+      "Fill small, stable hairline cracks with a cement-based filler"
+    ],
+    "materials": ["Cement", "Sand", "Cement-based crack filler", "Wall putty"],
+    "see_professional": "If the crack is wider than about 5 mm, runs diagonally, is near a door or window corner, or keeps growing, ask a registered engineer to inspect."
+  },
+  "water_stain": {
+    "title": "Water stain",
+    "why_it_matters": "A stain may indicate a leak or dampness. Ongoing moisture can damage plaster, paint, and timber, and can encourage mold.",
+    "possible_causes": [
+      "Leaking roof or iron sheets",
+      "Leaking or sweating pipes",
+      "Rising damp from the ground",
+      "Blocked gutters or poor drainage near the wall"
+    ],
+    "actions": [
+      "Find the source: check the roof above, nearby pipes, and gutters",
+      "Fix the leak first, then repair the paint or plaster",
+      "Let the wall dry fully before repainting",
+      "Open windows to improve airflow",
+      "Use anti-fungal paint once the wall is dry"
+    ],
+    "materials": ["Roofing sealant", "Bitumen waterproofing", "Damp-proof paint", "Anti-fungal paint"],
+    "see_professional": "If the stain keeps coming back, is spreading, or the plaster is falling off, ask a qualified builder or engineer to check."
+  },
+  "damaged_roofing": {
+    "title": "Damaged roofing",
+    "why_it_matters": "A damaged roof can let rain in, may weaken the roof structure over time, and can be unsafe in strong wind.",
+    "possible_causes": [
+      "Storm or strong wind",
+      "Falling branch or tree",
+      "Rusted or loose iron sheets (mabati)",
+      "Old or cracked tiles",
+      "Loose nails or fixings"
+    ],
+    "actions": [
+      "Keep people away from rooms under the damaged area",
+      "Do not climb a wet or damaged roof",
+      "Cover the opening with a tarpaulin or plastic sheet to stop rain getting in",
+      "Replace damaged sheets or tiles and fix loose nails",
+      "Clear gutters and trim overhanging branches"
+    ],
+    "materials": ["Iron sheets (mabati)", "Roofing nails with washers", "Concrete or clay roof tiles", "Tarpaulin", "Gutters and downpipes"],
+    "see_professional": "If roof timbers are broken, the roof is sagging, or a ceiling has collapsed, ask a registered engineer or experienced contractor to inspect before repair."
+  },
+  "exposed_reinforcement": {
+    "title": "Exposed reinforcement",
+    "why_it_matters": "Exposed steel can rust and swell, which cracks the concrete around it and may reduce the strength of that part of the building.",
+    "possible_causes": [
+      "Too little concrete cover over the steel",
+      "Water and moisture reaching the steel",
+      "Poor concrete mix or compaction",
+      "Impact damage"
+    ],
+    "actions": [
+      "Keep people and heavy loads away from the affected area",
+      "Do not hang or load anything on that part",
+      "Do not just cover it with paint or plaster",
+      "Have the damaged concrete assessed before any repair",
+      "Keep water away from the area"
+    ],
+    "materials": ["Rust-inhibiting primer", "Repair mortar", "Concrete bonding agent", "Cement and sand"],
+    "see_professional": "Always ask a registered engineer to inspect exposed reinforcement, especially in beams, columns, slabs, or balconies."
+  },
+  "standing_water": {
+    "title": "Standing water near the building",
+    "why_it_matters": "Water pooling near a building can soak the foundation and walls, cause dampness, and weaken the ground over time.",
+    "possible_causes": [
+      "Ground sloping toward the building",
+      "Blocked or missing drains",
+      "No gutters or downpipes",
+      "Heavy rain or flooding",
+      "A leaking pipe or tank"
+    ],
+    "actions": [
+      "Slope the ground so water flows away from the walls",
+      "Clear blocked drains and channels",
+      "Add gutters and downpipes that empty away from the building",
+      "Check for leaking pipes",
+      "Add a concrete apron or paving around the base of the wall"
+    ],
+    "materials": ["Murram or hardcore", "Concrete", "PVC drain pipes", "Gutters and downpipes", "Paving stones"],
+    "see_professional": "If water enters the house, reaches the foundation, or the base of the wall is cracking or sinking, ask a registered engineer to inspect."
+  }
+}
