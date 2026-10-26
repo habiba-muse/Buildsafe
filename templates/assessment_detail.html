@@ -9,6 +9,8 @@
   <img src="{{ url_for('static', filename='uploads/' + name) }}" width="200">
 {% endfor %}
 
+<h2>Summary</h2>
+<p>{{ explanation.summary }}</p>
 <h2>Overall Risk: {{ risk.overall_score }} / 100 — {{ risk.risk_level | capitalize }}</h2>
 {% if risk.floor_applied %}<p>Raised to at least Moderate because a high-severity issue was detected.</p>{% endif %}
 <h2>Risk by Category (0 = low, 100 = high)</h2>
@@ -53,5 +55,6 @@
 <p><em>This is a preliminary assessment of visible issues only. It is not a professional engineering inspection.</em></p>
 <p><a href="{{ url_for('auth.dashboard') }}">Back to dashboard</a></p>
 {% endblock %}
+
 
 

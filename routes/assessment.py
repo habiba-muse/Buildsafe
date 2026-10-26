@@ -4,12 +4,10 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from werkzeug.utils import secure_filename
 from models import db, Assessment
 from ai.image_validator import validate_images, is_valid_image
-from ai.vision import analyze_image
-from ai.feature_extractor import normalize_findings
-from ai.risk_engine import compute_risk
-from ai.recommendation_engine import get_recommendations
+from ai.analyzer import analyze_images, build_result
 
 assessment_bp = Blueprint("assessment", __name__)
+
 
 @assessment_bp.route("/upload", methods=["GET", "POST"])
 def upload():
@@ -55,13 +53,10 @@ def upload():
 
             saved_paths.append(filepath)
 
-        all_findings = []
-        for path in saved_paths:
-            image_findings = analyze_image(path)
-            all_findings.extend(image_findings)
+        findings = analyze_images(saved_paths)
 
         new_assessment.image_paths = ",".join(saved_paths)
-        new_assessment.findings = json.dumps(normalize_findings(all_findings))
+        new_assessment.findings = json.dumps(findings)
         new_assessment.status = "analyzed"
         db.session.commit()
 
@@ -69,6 +64,7 @@ def upload():
         return redirect(url_for("assessment.view_assessment", assessment_id=new_assessment.id))
 
     return render_template("upload.html")
+
 
 @assessment_bp.route("/assessment/<int:assessment_id>")
 def view_assessment(assessment_id):
@@ -84,19 +80,17 @@ def view_assessment(assessment_id):
     image_names = []
     for p in image_list:
         rel = os.path.relpath(p, current_app.config["UPLOAD_FOLDER"])
-        rel = rel.replace("\\", "/")
-        image_names.append(rel)
+        image_names.append(rel.replace("\\", "/"))
 
     findings = json.loads(assessment.findings) if assessment.findings else []
+    result = build_result(findings)
 
     return render_template(
         "assessment_detail.html",
         assessment=assessment,
         image_names=image_names,
         findings=findings,
-        risk=compute_risk(findings),
-        recommendations=get_recommendations(findings)
+        risk=result["risk"],
+        recommendations=result["recommendations"],
+        explanation=result["explanation"],
     )
-
-
-
