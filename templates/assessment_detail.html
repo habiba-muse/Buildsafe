@@ -9,12 +9,21 @@
   <img src="{{ url_for('static', filename='uploads/' + name) }}" width="200">
 {% endfor %}
 
+<h2>Risk by Category (0 = low, 100 = high)</h2>
+<ul>
+  <li>Structural: {{ risk.categories.structural }}</li>
+  <li>Flood / Drainage: {{ risk.categories.flood_drainage }}</li>
+  <li>Architectural: {{ risk.categories.architectural }}</li>
+  <li>Materials: {{ risk.categories.materials }}</li>
+</ul>
+
 <h2>Findings</h2>
 {% if findings %}
 <ul>
 {% for f in findings %}
   <li>
-    <strong>{{ f.issue }}</strong> — confidence: {{ f.confidence }}
+    <strong>{{ f.issue }}</strong> — severity: {{ risk.severity[f.issue] }}
+    — confidence: {{ f.confidence }}
     — seen in {{ f.seen_in_images }} image(s)
     <br>Evidence: {{ f.evidence | join(", ") }}
   </li>
@@ -24,5 +33,6 @@
 <p>No findings detected.</p>
 {% endif %}
 
+<p><em>This is a preliminary assessment of visible issues only. It is not a professional engineering inspection.</em></p>
 <p><a href="{{ url_for('auth.dashboard') }}">Back to dashboard</a></p>
 {% endblock %}

@@ -6,6 +6,7 @@ from models import db, Assessment
 from ai.image_validator import validate_images, is_valid_image
 from ai.vision import analyze_image
 from ai.feature_extractor import normalize_findings
+from ai.risk_engine import compute_risk
 
 assessment_bp = Blueprint("assessment", __name__)
 
@@ -91,6 +92,8 @@ def view_assessment(assessment_id):
         "assessment_detail.html",
         assessment=assessment,
         image_names=image_names,
-        findings=findings
+        findings=findings,
+        risk=compute_risk(findings)
     )
+
 

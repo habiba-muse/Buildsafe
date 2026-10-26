@@ -1,0 +1,22 @@
+﻿{
+  "wall_crack": {
+    "severity": "moderate",
+    "impact": {"structural": 40, "materials": 15}
+  },
+  "water_stain": {
+    "severity": "low",
+    "impact": {"flood_drainage": 25, "materials": 20, "architectural": 5}
+  },
+  "damaged_roofing": {
+    "severity": "high",
+    "impact": {"structural": 30, "flood_drainage": 25, "materials": 30}
+  },
+  "exposed_reinforcement": {
+    "severity": "high",
+    "impact": {"structural": 50, "materials": 40}
+  },
+  "standing_water": {
+    "severity": "moderate",
+    "impact": {"flood_drainage": 50, "structural": 10}
+  }
+}
